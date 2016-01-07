@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #img {
+            width: 100%;
+            height: 100vh;
+            background-size: contain;
+            background-color: #000;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("http://polaris.nipr.ac.jp/~acaurora/aurora/Tromso/latest.jpg");
+            /*background-image: url("http://polaris.nipr.ac.jp/~acaurora/aurora/Longyearbyen/latest.jpg");*/
+        }
+
+        #overlay {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            text-align: center;
+            padding-top: 50%;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<audio id="audio" src='/public/libs/alarm.mp3'></audio>
+<div id="img"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/libs/jquery.js"></script>
+
+<script>
+
+    var audio = $("#audio").get(0);
+
+    var socket = io.connect('/');
+    socket.on('reload', function (data) {
+        $("#img").css("background-image","url(/public/pics/" + data.ts + ".jpg)");
+    });
+
+    socket.on('alarm', function () {
+        audio.play();
+        $("#img").click(function () {
+            audio.pause();
+            audio.currentTime = 0; //Reset the alarm
+        });
+    });
+
+    //Hack the mobile browsers... (they don't just allow autoplaying sounds)
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        //mobile
+        $("body").append('<div id="overlay">Touch to start</div>');
+        $("#overlay").click(function () {
+            audio.load();
+            $(this).remove();
+        });
+    }
+
+</script>
+</body>
+</html>
