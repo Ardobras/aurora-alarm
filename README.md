@@ -10,6 +10,7 @@ A hosted version for the all sky cam from Tromsø, Norway is set up at [https://
 1. Clone Repo
 2. Run `npm install`
 3. Install [ImageMagick](http://www.imagemagick.org/)
+4. Rename `config-sample.json` to `config.json`
 4. Run `npm start`
 
 ## License
