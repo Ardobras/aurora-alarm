@@ -12,6 +12,16 @@ var request = require('request');
 var easyimg = require('easyimage');
 var getPixels = require("get-pixels");
 
+// Create folder if not existing
+if (!fs.existsSync(__dirname + '\\public\\pics')){
+  fs.mkdirSync(__dirname + '\\public\\pics');
+}
+
+if (!fs.existsSync(__dirname + '\\resources\\temp')){
+  fs.mkdirSync(__dirname + '\\resources\\temp');
+}
+
+
 //Start Server with express and socket.io
 server.listen(80);
 
