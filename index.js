@@ -13,12 +13,12 @@ var easyimg = require('easyimage');
 var getPixels = require("get-pixels");
 
 // Create folder if not existing
-if (!fs.existsSync(__dirname + '\\public\\pics')){
-  fs.mkdirSync(__dirname + '\\public\\pics');
+if (!fs.existsSync(__dirname + '/public/pics')){
+  fs.mkdirSync(__dirname + '/public/pics');
 }
 
-if (!fs.existsSync(__dirname + '\\resources\\temp')){
-  fs.mkdirSync(__dirname + '\\resources\\temp');
+if (!fs.existsSync(__dirname + '/resources/temp')){
+  fs.mkdirSync(__dirname + '/resources/temp');
 }
 
 
@@ -27,7 +27,7 @@ server.listen(80);
 
 //Send the index.html file
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '\\resources\\index.html');
+  res.sendfile(__dirname + '/resources/index.html');
 });
 
 //Serve the public repo
@@ -75,7 +75,7 @@ function emitAll(ts) {
 
 
 function cropImage(ts, cb) {
-  easyimg.exec('composite -compose Dst_In -gravity center ' + __dirname + '\\resources\\mask.png ' + __dirname + '\\public\\pics\\' + ts + '.jpg ' + __dirname + '\\resources\\temp\\' + ts + '.jpg').then(
+  easyimg.exec('composite -compose Dst_In -gravity center ' + __dirname + '/resources/mask.png ' + __dirname + '/public/pics/' + ts + '.jpg ' + __dirname + '/resources/temp/' + ts + '.jpg').then(
     function () {
       cb(ts);
     }, function (err) {
@@ -87,7 +87,7 @@ function cropImage(ts, cb) {
 
 function analyseImage(ts) {
 
-  var imagepath = __dirname + '\\resources\\temp\\' + ts + '.jpg';
+  var imagepath = __dirname + '/resources/temp/' + ts + '.jpg';
 
   //Get every pixel
   getPixels(imagepath, function (err, pixels) {
