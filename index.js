@@ -57,7 +57,7 @@ function getImage(cb) {
 
   var ts = Date.now();
   //Download picture with get to avoid network caching
-  download('http://polaris.nipr.ac.jp/~acaurora/aurora/Tromso/latest.jpg?' + ts, __dirname + '/bilder/' + ts + '.jpg', function () {
+  download('http://polaris.nipr.ac.jp/~acaurora/aurora/Tromso/latest.jpg?' + ts, __dirname + '/public/pics/' + ts + '.jpg', function () {
     // Alternative URL for the weather station in Longyearbyen
     // download('http://polaris.nipr.ac.jp/~acaurora/aurora/Longyearbyen/latest.jpg?' +  ts , __dirname + '/bilder/' + ts + '.jpg', function(){
 
