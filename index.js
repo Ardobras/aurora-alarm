@@ -11,6 +11,7 @@ var fs = require('fs');
 var request = require('request');
 var easyimg = require('easyimage');
 var getPixels = require("get-pixels");
+var config = require('./config.json');
 
 // Create folder if not existing
 if (!fs.existsSync(__dirname + '/public/pics')){
@@ -23,7 +24,7 @@ if (!fs.existsSync(__dirname + '/resources/temp')){
 
 
 //Start Server with express and socket.io
-server.listen(80);
+server.listen(config.port);
 
 //Send the index.html file
 app.get('/', function (req, res) {
