@@ -34,19 +34,19 @@
     </style>
 </head>
 <body>
-<audio id="audio" src='/public/libs/alarm.mp3'></audio>
+<audio id="audio" src='public/libs/alarm.mp3'></audio>
 <div id="img"></div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/public/libs/jquery.js"></script>
+<script src="public/libs/jquery.js"></script>
 
 <script>
 
     var audio = $("#audio").get(0);
-
-    var socket = io.connect('/');
+    var url = window.location.href;
+    var socket = io.connect();
     socket.on('reload', function (data) {
-        $("#img").css("background-image","url(/public/pics/" + data.ts + ".jpg)");
+        $("#img").css("background-image","url(" + url + "public/pics/" + data.ts + ".jpg)");
     });
 
     socket.on('alarm', function () {
