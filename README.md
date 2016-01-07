@@ -3,7 +3,7 @@ A (live) alarm for polar lights. It watches all sky cams, analyses the image and
 
 ## Demo
 
-A hosted version for the all sky cam from Tromsø, Norway is set up at [https://keno.digital/project/auroralarm](https://keno.digital/project/auroralarm)
+A hosted version for the all sky cam from Tromsø, Norway is set up at [https://keno.digital/project/aurora-alarm](https://keno.digital/project/aurora-alarm)
 
 ## Installation instructions
 
