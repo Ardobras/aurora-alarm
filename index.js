@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
 });
 
 //Serve the public repo
-app.use('/public', express.static('bilder'));
+app.use('/public', express.static('public'));
 
 //Start a cron job that loads a new Image every 30 seconds
 new CronJob('*/30 * * * * *', function () {
